@@ -1,6 +1,5 @@
 import {dates} from '../utils/dateConverter.js';
 import {genre} from '../utils/genre.js';
-import { seasons } from '../utils/season.js';
 
 const template = document.createElement('template');
 template.innerHTML = `
@@ -55,12 +54,25 @@ class PodcastCard extends HTMLElement {
 
 }
 
+/** 
+ * Set the podcast data for this card and trigger a re-render.
+ * @param {Object} podcast - The podcast data to display on the card.
+ * 
+*/
+
 setPodcast(podcast) {
     this._podcast = podcast;
     this.renderPodcast();
 }
 
+/** 
+ * Update the card's content based on the current podcast data.
+ * This method is called whenever the podcast data is set or updated.
+ */
+*/
+
 renderPodcast() {
+
     if (!this._podcast) return;
 
     const { title, image, seasons: seasonCount, genres: genreIds, updated } = this._podcast;
