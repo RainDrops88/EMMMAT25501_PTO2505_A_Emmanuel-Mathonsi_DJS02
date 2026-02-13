@@ -36,7 +36,7 @@ template.innerHTML = `
     </div>
 `;
 
-class PodcastCard extends HTMLElement {
+export class PodcastCard extends HTMLElement {
     constructor() { 
         super();
         const shadowRoot = this.attachShadow({ mode: 'open' });
@@ -50,48 +50,45 @@ class PodcastCard extends HTMLElement {
             genres: shadowRoot.querySelector('.genres'),
             updatedDate: shadowRoot.querySelector('.updated-date'),
         };
+
+        this.cardClick = this.cardClick.bind(this);
+        this.element.card.addEventListener('click', this.cardClick);
     }
 
-}
-
-/** 
- * Set the podcast data for this card and trigger a re-render.
- * @param {Object} podcast - The podcast data to display on the card.
- * 
-*/
-
-setPodcast(podcast) {
-    this._podcast = podcast;
-    this.renderPodcast();
-}
-
-/** 
- * Update the card's content based on the current podcast data.
- * This method is called whenever the podcast data is set or updated.
- */
-*/
-
-renderPodcast() {
-
-    if (!this._podcast) return;
-
-    const { title, image, seasons: seasonCount, genres: genreIds, updated } = this._podcast;
-    const genreNames = genre.getGenreNames(genreIds);
-    this.element.img.src = image;
-    this.element.img.alt = `Image for ${title}`;
-    this.element.title.textContent = title;
-    this.element.seasons.textContent = `${seasonCount} seasons${seasonCount > 1 ? 's' : ''}`;
-    this.element.genres.innerHTML = genreNames.map(name => `<span>${name}</span>`).join(', ');
-    this.element.updatedDate.textContent = dates.format(updated);
-
-    this.element.card.addEventListener('click', () => {
+    cardClick() {
         const event = new CustomEvent('podcastSelected', {
             detail: { podcast: this._podcast },
             bubbles: true,
             composed: true
         });
         this.dispatchEvent(event);
-    });
+    }
+
+    /** 
+     * Set the podcast data for this card and trigger a re-render.
+     * @param {Object} podcast - The podcast data to display on the card.
+     */
+    setPodcast(podcast) {
+        this._podcast = podcast;
+        this.renderPodcast();
+    }
+
+    /** 
+     * Update the card's content based on the current podcast data.
+     * This method is called whenever the podcast data is set or updated.
+     */
+    renderPodcast() {
+        if (!this._podcast) return;
+
+        const { title, image, seasons: seasonCount, genres: genreIds, updated } = this._podcast;
+        const genreNames = genre.getGenreNames(genreIds);
+        this.element.img.src = image;
+        this.element.img.alt = `Image for ${title}`;
+        this.element.title.textContent = title;
+        this.element.seasons.textContent = `${seasonCount} season${seasonCount > 1 ? 's' : ''}`;
+        this.element.genres.innerHTML = genreNames.map(name => `<span>${name}</span>`).join("");
+        this.element.updatedDate.textContent = dates.formatDate(updated);
+    }
 }
 
 customElements.define('podcast-card', PodcastCard);
