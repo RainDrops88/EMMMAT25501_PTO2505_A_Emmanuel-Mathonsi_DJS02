@@ -1,29 +1,54 @@
 import {dates} from '../utils/dateConverter.js';
 import {genre} from '../utils/genre.js';
+import { createModal} from './createModal.js';
 
 const template = document.createElement('template');
 template.innerHTML = `
   <style>
     .card {
-        background-color: #f5f5f5;
+        background: #9edcf2c5;
+        padding: 1rem;
         border-radius: 8px;
-        padding: 0.8rem;
-        width: 17rem;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         cursor: pointer;
+        transition: transform 0.2s;
     }
+    .card:hover {
+        transform: scale(1.02);
+    }
+
     .card img {
         width: 100%;
-        height: auto;
-        border-radius: 4px;
-    }
+        border-radius: 6px;
+}
+
     .card h3 {
         margin: 0.5rem 0;
-        font-size: 1.2rem;
     }
-    .card p {
-        margin: 0.3rem 0;
-        color: #555;
+
+     .card p {
+        margin: 0px;
+        font-size: 0.8rem;
+        color: var(--grey-text);
+    }
+
+    .tags {
+        margin: 0.5rem 0;
+    }
+
+    .tag {
+        background: #eee;
+        padding: 0.3rem 0.6rem;
+        margin-right: 0.5rem;
+        margin-top: 0.5rem;
+        border-radius: 4px;
+        display: inline-block;
+        font-size: 0.8rem;
+    }
+
+    .updated-text {
+        font-size: 0.8rem;
+        color: var(--grey-text);
     }
 
     </style>
@@ -39,7 +64,7 @@ template.innerHTML = `
 export class PodcastCard extends HTMLElement {
     constructor() { 
         super();
-        const shadowRoot = this.attachShadow({ mode: 'open' });
+        const shadowRoot = this.attachShadow({ mode: 'closed' });
         shadowRoot.appendChild(template.content.cloneNode(true));
 
         this.element = {
@@ -52,16 +77,16 @@ export class PodcastCard extends HTMLElement {
         };
 
         this.cardClick = this.cardClick.bind(this);
-        this.element.card.addEventListener('click', this.cardClick);
+        this.element.card.addEventListener('click', (event) => {
+            event.stopPropagation();
+            this.cardClick();
+        });
     }
 
     cardClick() {
-        const event = new CustomEvent('podcastSelected', {
-            detail: { podcast: this._podcast },
-            bubbles: true,
-            composed: true
-        });
-        this.dispatchEvent(event);
+        const modal = createModal(this._podcast);
+        document.body.appendChild(modal);
+        modal.showModal();
     }
 
     /** 
