@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="./scripts/index.js" type="module"></script>
+    <link rel="stylesheet" href="styles.css">
     <link
       rel="icon"
       type="image/png"
@@ -13,7 +14,20 @@
     <title>Podcast</title>
 </head>
 <body>
-    <div id="podcast-container">
+    
+    <header id="header" class="header">
+        <div class="logo-title">
+        <img  id="logo" src="./icons/podcast icon.webp" alt="Podcast Icon" />
+        <h1>PodcastApp</h1>
+        </div>
+        <div class="search-profile">
+        <div id="search-bar">🔍</div>
+        <div id="profile">🧑</div>
+        </div>
+    </header>
+    <div id="podcast-container" class="grid">
     </div>
+    <div id="modal-cointainer"></div>
+
 </body>
 </html>
