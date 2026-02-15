@@ -6,7 +6,7 @@ const template = document.createElement('template');
 template.innerHTML = `
   <style>
     .card {
-        background: #9edcf2c5;
+        background: #def2f9c5;
         padding: 1rem;
         border-radius: 8px;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -36,7 +36,7 @@ template.innerHTML = `
         margin: 0.5rem 0;
     }
 
-    .tag {
+    .genre {
         background: #eee;
         padding: 0.3rem 0.6rem;
         margin-right: 0.5rem;
@@ -111,7 +111,7 @@ export class PodcastCard extends HTMLElement {
         this.element.img.alt = `Image for ${title}`;
         this.element.title.textContent = title;
         this.element.seasons.textContent = `${seasonCount} season${seasonCount > 1 ? 's' : ''}`;
-        this.element.genres.innerHTML = genreNames.map(name => `<span>${name}</span>`).join("");
+        this.element.genres.innerHTML = genreNames.map(name => `<span class="genre">${name}</span>`).join("");
         this.element.updatedDate.textContent = dates.formatDate(updated);
     }
 }

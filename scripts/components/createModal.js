@@ -107,7 +107,7 @@ export function createModal(podcast) {
                 <button class="close-modal" aria-label="Close Modal">&times;</button>
             </div>
             <div class="modal-content">
-                <img src="${podcast.image}" alt="Podcast Image" class="modal-podcast-image">
+                <img src="${podcast.image}" alt="Podcast Image" class="modal-image">
                 <div class="modal-details">
                     <h3>Description</h3>
                     <p class="title-description">${podcast.description}</p>
