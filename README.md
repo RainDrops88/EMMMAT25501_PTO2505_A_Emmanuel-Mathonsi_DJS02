@@ -44,3 +44,33 @@ The component should be designed to **accept podcast data via attributes or prop
 
 ---
 
+## Code Quality & Maintainability
+
+- Write clear, consistent, and modular code.
+- Follow **functional and object-oriented programming** patterns.
+- Document major functions using **JSDoc comments** (parameters, return types, etc.).
+- Use consistent **code formatting** across HTML, CSS, and JavaScript.
+
+---
+
+## Technical Constraints
+
+- Do **not** use any third-party frameworks for creating the web component.
+- Use **native JavaScript (ES6+)**, HTML, and CSS.
+- No page reloads or navigation.
+- Ensure compatibility with modern browsers.
+
+---
+
+## Project Setup Instructions
+
+  1. Clone the project folder.
+  2. Build your site using HTML, CSS and JavaScript.
+  3. Link the createModal file on your HTML file.
+  4. Add <podcast-card></podcasr-card> on your HTML file to add the Podcast Card.
+  5. Click the cards to open the modal.
+  6. Click the modal closer to ensure its functional.
+  7. Create functions to pull data and update the cards and modal.
+  7. Use Git to track your progress with frequent commits.
+
+  ---
