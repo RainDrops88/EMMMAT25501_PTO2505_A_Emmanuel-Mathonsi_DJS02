@@ -1,4 +1,4 @@
-import { seasons as seasonsData } from '../data.js';
+import { seasons as seasonsData } from '../../data.js';
 
 /**
  * Utility functions for season handling.

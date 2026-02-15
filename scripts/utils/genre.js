@@ -1,4 +1,4 @@
-import { genres } from '../data.js';
+import { genres } from '../../data.js';
 
 /**
  * Utility functions for genre handling.
