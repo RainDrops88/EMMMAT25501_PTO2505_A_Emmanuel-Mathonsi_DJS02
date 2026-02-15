@@ -74,3 +74,9 @@ The component should be designed to **accept podcast data via attributes or prop
   7. Use Git to track your progress with frequent commits.
 
   ---
+
+## 🌐 Socials
+
+[![GitHub](https://img.shields.io/badge/-GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/RainDrops88)  
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-blue?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/emmanuel-mathonsi-300b33308/)  
+📧 Email: [07942jerry@gmail.com]
