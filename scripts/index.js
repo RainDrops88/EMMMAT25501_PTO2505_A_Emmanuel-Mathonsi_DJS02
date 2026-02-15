@@ -1,5 +1,6 @@
 import { PodcastCard } from "./components/createCard.js";
-import { podcasts } from "./data.js";
+import { podcasts } from "../data.js";
+
 
 const podcastCardsContainer = document.getElementById('podcast-container');
 
