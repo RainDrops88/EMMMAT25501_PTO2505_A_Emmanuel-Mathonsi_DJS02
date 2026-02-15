@@ -138,3 +138,26 @@
   color: var(--grey-text);
   font-size: 0.75rem;
 }
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  .modal-content {
+    flex-direction: column;
+  }
+  .modal-image {
+    width: 100%;
+    border-radius: 6px;
+  }
+  .modal-details {
+    margin-left: 0px;
+  }
+  .modal-details p {
+    font-size: 1rem;
+  }
+  .season-item p{
+    font-size: 0.8rem;
+  }
+}
